@@ -1,6 +1,7 @@
 module.exports = app => {
     const courses = require("../controllers/course.controller.js");
     var router = require("express").Router();
+    
     // Create a new course
     router.post("/", courses.create);
     // Retrieve all courses
@@ -11,5 +12,6 @@ module.exports = app => {
     router.put("/:id", courses.update);
     // Delete a course with id
     router.delete("/:id", courses.delete);
+
     app.use('/api/courses', router);
-  };
+};
