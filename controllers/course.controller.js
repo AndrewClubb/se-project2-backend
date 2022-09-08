@@ -1,6 +1,6 @@
 const db = require("../models");
 const Course = db.course;
-//const Op = db.Sequelize.Op;
+
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
@@ -67,7 +67,7 @@ exports.findOne = (req, res) => {
         res.send(data);
       } else {
         res.status(404).send({
-          message: 'Cannot find Course with id=${id}.'
+          message: 'Cannot find Course with id=' + id
         });
       }
     })
@@ -91,7 +91,7 @@ exports.update = (req, res) => {
       });
     } else {
       res.send({
-        message: 'Cannot update Course with id=${id}. Maybe Course was not found or req.body is empty!'
+        message: 'Cannot update Course with id=' + id + '. Maybe Course was not found or req.body is empty!'
       });
     }
   })
