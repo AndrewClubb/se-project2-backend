@@ -1,6 +1,6 @@
 const db = require("../models/course.model.js");
 const Course = db.courses;
-const Op = db.Sequelize.Op;
+//const Op = db.Sequelize.Op;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
