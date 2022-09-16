@@ -8,6 +8,8 @@ module.exports = app => {
     router.get("/", course.findAll);
     // Retrieve a single course with id
     router.get("/:id", course.findOne);
+    // Retrieve courses by dept
+    router.get("/dept/:dept", course.findCoursesByDept);
     // Update a course with id
     router.put("/:id", course.update);
     // Delete a course with id

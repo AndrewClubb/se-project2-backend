@@ -45,7 +45,6 @@ exports.create = (req, res) => {
 
 // Retrieve all Courses from the database
 exports.findAll = (req, res) => {
-  const title = req.query.title;
   Course.findAll()
     .then(data => {
       res.send(data);
@@ -76,6 +75,23 @@ exports.findOne = (req, res) => {
         message: 'Error retrieving Course with id=' + id
       });
     });
+};
+
+// Retrieve courses by dept
+exports.findCoursesByDept = (req, res) => {
+  const dept = req.params.dept;
+  Course.findAll({
+    where: { dept: dept }
+  })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving Courses."
+    });
+  });
 };
 
 // Update a Course by the id in the request
