@@ -1,4 +1,5 @@
 const db = require("../models");
+const { Op } = require("sequelize");
 const Course = db.course;
 
 // Create and Save a new Tutorial
@@ -44,7 +45,7 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Courses from the database
-exports.findAll = (req, res) => {
+exports.findAllCourses = (req, res) => {
   Course.findAll()
     .then(data => {
       res.send(data);
@@ -58,7 +59,7 @@ exports.findAll = (req, res) => {
 };
 
 // Retrieve a single Course with an id
-exports.findOne = (req, res) => {
+exports.findCourseById = (req, res) => {
   const id = req.params.id;
   Course.findByPk(id)
     .then(data => {
@@ -92,6 +93,27 @@ exports.findCoursesByDept = (req, res) => {
         err.message || "Some error occurred while retrieving Courses."
     });
   });
+
+// Retrieve courses by name
+exports.findCoursesByName = (req, res) => {
+  const name = req.params.name;
+  let stringName = "%" + name + "%"
+  Course.findAll({
+    where: {
+      name: {
+        [Op.like]: stringName
+      }
+    }
+  }) 
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Courses."
+      });
+    });
 };
 
 // Update a Course by the id in the request
