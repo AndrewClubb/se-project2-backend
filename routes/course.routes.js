@@ -5,9 +5,11 @@ module.exports = app => {
     // Create a new course
     router.post("/", course.create);
     // Retrieve all courses
-    router.get("/", course.findAll);
+    router.get("/", course.findAllCourses);
     // Retrieve a single course with id
-    router.get("/:id", course.findOne);
+    router.get("/id/:id", course.findCourseById);
+    // Retrieve courses by name
+    router.get("/name/:name", course.findCoursesByName);
     // Update a course with id
     router.put("/:id", course.update);
     // Delete a course with id
