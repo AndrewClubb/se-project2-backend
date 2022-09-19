@@ -46,7 +46,6 @@ exports.create = (req, res) => {
 
 // Retrieve all Courses from the database
 exports.findAllCourses = (req, res) => {
-  const title = req.query.title;
   Course.findAll()
     .then(data => {
       res.send(data);
@@ -78,6 +77,22 @@ exports.findCourseById = (req, res) => {
       });
     });
 };
+
+// Retrieve courses by dept
+exports.findCoursesByDept = (req, res) => {
+  const dept = req.params.dept;
+  Course.findAll({
+    where: { dept: dept }
+  })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving Courses."
+    });
+  });
 
 // Retrieve courses by name
 exports.findCoursesByName = (req, res) => {
