@@ -157,4 +157,5 @@ exports.delete = (req, res) => {
       })
     }
   })
+}
 };
