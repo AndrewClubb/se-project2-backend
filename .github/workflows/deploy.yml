@@ -36,7 +36,7 @@ jobs:
                   command: |
                       cd nodeapps/2022/project2/t2
                       npm install
-                      sudo systemctl stop course-backend
-                      sudo cp course-backend.service /lib/systemd/system/course-backend-t2.service
+                      sudo systemctl stop course-t2-backend
+                      sudo cp course-t2-backend.service /lib/systemd/system/course-t2-backend.service
                       sudo systemctl daemon-reload
-                      sudo systemctl start course-backend-t2
+                      sudo systemctl start course-t2-backend
