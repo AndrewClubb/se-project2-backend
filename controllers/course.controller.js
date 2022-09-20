@@ -93,6 +93,7 @@ exports.findCoursesByDept = (req, res) => {
         err.message || "Some error occurred while retrieving Courses."
     });
   });
+};
 
 // Retrieve courses by name
 exports.findCoursesByName = (req, res) => {
@@ -157,5 +158,4 @@ exports.delete = (req, res) => {
       })
     }
   })
-}
 };
