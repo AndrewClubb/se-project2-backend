@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: 'project2.eaglesoftwareteam.com',
+    HOST: 'localhost',
     port: 3306,
     USER: 't22022',
     PASSWORD: 'cs@oc2022t2',
