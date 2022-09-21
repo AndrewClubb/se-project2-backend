@@ -117,6 +117,23 @@ exports.findCoursesByName = (req, res) => {
     });
 };
 
+// Retrieve courses by course number
+exports.findCoursesByNumber = (req, res) => {
+  const num = req.params.num;
+  Course.findAll({
+    where: { courseNumber: num }
+  })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving Courses."
+    });
+  });
+};
+
 // Update a Course by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;

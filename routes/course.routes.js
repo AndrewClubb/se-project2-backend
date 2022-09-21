@@ -12,6 +12,8 @@ module.exports = app => {
     router.get("/dept/:dept", course.findCoursesByDept);
     // Retrieve courses by name
     router.get("/name/:name", course.findCoursesByName);
+    // Retrieve courses by course number
+    router.get("/num/:num", course.findCoursesByNumber);
     // Update a course with id
     router.put("/:id", course.update);
     // Delete a course with id
